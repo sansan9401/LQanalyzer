@@ -2,12 +2,23 @@
 #include "rochcor2015.h"
 #include "TLorentzVector.h"
 
+const double rochcor2015::pi = 3.14159265358979323846;
 
 const double rochcor2015::netabin[25] = {-2.4,-2.25,-2.1,-1.85,-1.6,-1.4,-1.2,-1.0,-0.8,-0.6,-0.4,-0.2,
 					 0.0,0.2,0.4,0.6,0.8,1.0,1.2,1.4,1.6,1.85,2.1,2.25,2.4};
-
 const double rochcor2015::anetabin[13] = {0.0,0.2,0.4,0.6,0.8,1.0,1.2,1.4,1.6,1.85,2.1,2.25,2.4};
 
+const double rochcor2015::mu_mass = 0.105658;
+const double rochcor2015::genm_smr = 9.09957e+01; //gen mass peak with eta dependent gaussian smearing => better match in Z mass profile vs. eta/phi
+const double rochcor2015::genm = 91.06; //gen mass peak without smearing => Z mass profile vs. eta/phi in CMS note
+const double rochcor2015::mgscl = 1.00139; //rec mass peak scale for MC
+const double rochcor2015::dgscl = 1.00272; //rec mass peak scale for data
+const double rochcor2015::mgscl_stat = 2.08589e-05; //stat. error of global factor for mass peak in MC
+const double rochcor2015::mgscl_syst = 3.81651e-03; //syst. error of global factor for mass peak in MC
+const double rochcor2015::dgscl_stat = 3.24096e-05; //stat. error of global factor for mass peak in data
+const double rochcor2015::dgscl_syst = 0.0008; //syst. error of global factor for mass peak in data
+const double rochcor2015::dgscl_iter = 1.00026; //one more iteration to fix offset
+const double rochcor2015::mgscl_iter = 1.00054; //one more iteration to fix offset     
 
 //---------------------------------------------------------------------------------------------  
 const double rochcor2015::dcor_bf[2][16][24]={{{-0.000099782,0.000022562,-0.000134105,0.000060708,0.000009257,-0.000009968,0.000057279,0.000023405,0.000065464,0.000033987,0.000066837,0.000067584,0.000044158,

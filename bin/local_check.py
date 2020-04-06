@@ -59,9 +59,7 @@ if not os.path.exists(tag_dir):
     old_out=os.getenv("LQANALYZER_DIR")+"/data/output/CAT/"
 
     
-    mount_name="/data2"
-    if "cmscluster.snu.ac.kr" in str(os.getenv("HOSTNAME")):
-        mount_name="/data4"
+    mount_name="/data7"
 
     new_out=mount_name+"/CAT_SKTreeOutput/JobOutPut/"+os.getenv("USER")
     print "cleaning up home directory"

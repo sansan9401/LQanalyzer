@@ -6,7 +6,7 @@
 
 void triggerEfficiency(){
 
-  TString path = "/data2/CAT_SKTreeOutput/JobOutPut/jalmond/LQanalyzer//data/output/CAT/HNDiElectron/periodCtoD/HNDiElectron_HN_EE_M";
+  TString path = "/data7/DATA/CAT_SKTreeOutput/JobOutPut/jalmond/LQanalyzer//data/output/CAT/HNDiElectron/periodCtoD/HNDiElectron_HN_EE_M";
   std::vector<TString> masses;
   masses.push_back("40");
   masses.push_back("100");

@@ -56,7 +56,7 @@ for i in sampledir:
          os.system("mkdir " + output + "/output/")
               
       
-   os.system("ls /data2/DATA/cattoflat/skim/" + i + " > " + output + "/list.txt" )
+   os.system("ls /data7/DATA/cattoflat/skim/" + i + " > " + output + "/list.txt" )
 
    fr = open(output + "/list.txt" , 'r')
    counter=0
@@ -72,7 +72,7 @@ for i in sampledir:
          os.system("mkdir " + output+ "/" + str(j))
          
       configfile=open(output+ "/"  + str(j) + "/" + runscript,'w')
-      configfile.write(makeNtupleMakerSlimH("/data2/DATA/cattoflat/skim/" + output,output+ "/list.txt",j, output))
+      configfile.write(makeNtupleMakerSlimH("/data7/DATA/cattoflat/skim/" + output,output+ "/list.txt",j, output))
       configfile.close()
 
       configfileC=open(output+ "/" + str(j) + "/" + runscriptC,'w')
@@ -95,12 +95,12 @@ for i in sampledir:
             job_finised=True
 
 
-   if not (os.path.exists("/data2/DATA/cattoflat/skim/slim/" + i)):
-      os.system("mkdir " + "/data2/DATA/cattoflat/skim/slim/" + i)
+   if not (os.path.exists("/data7/DATA/cattoflat/skim/slim/" + i)):
+      os.system("mkdir " + "/data7/DATA/cattoflat/skim/slim/" + i)
 
       
-   print "Moving samples to /data2/DATA/cattoflat/skim/slim/" + i    
-   os.system("mv "  +  output+ "/output/*.root /data2/DATA/cattoflat/skim/slim/" + i )
-   print "mv "  +  output+ "/output/*.root /data2/DATA/cattoflat/skim/slim/" + i 
+   print "Moving samples to /data7/DATA/cattoflat/skim/slim/" + i    
+   os.system("mv "  +  output+ "/output/*.root /data7/DATA/cattoflat/skim/slim/" + i )
+   print "mv "  +  output+ "/output/*.root /data7/DATA/cattoflat/skim/slim/" + i 
    
    os.system("rm -r " + output)

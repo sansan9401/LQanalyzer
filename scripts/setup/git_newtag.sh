@@ -29,7 +29,7 @@ do
     if [[ $line  == *$tagname* ]]; then
 	notnew_tag=True
     fi	
-done  < /data1/LQAnalyzer_rootfiles_for_analysis/CATTag/LatestTag.txt
+done  < /data7/DATA/LQAnalyzer_rootfiles_for_analysis/CATTag/LatestTag.txt
 
 if [[ $notnew_tag == "False" ]];then
     echo "$tagname (HEAD)" >> LatestTag.txt
@@ -43,8 +43,8 @@ if [[ $notnew_tag == "False" ]];then
 	    sline=${line%$suffix}
 	    echo "$sline" >> LatestTag.txt
 	fi
-    done  < /data1/LQAnalyzer_rootfiles_for_analysis/CATTag/LatestTag.txt
-    mv LatestTag.txt /data1/LQAnalyzer_rootfiles_for_analysis/CATTag/LatestTag.txt
+    done  < /data7/DATA/LQAnalyzer_rootfiles_for_analysis/CATTag/LatestTag.txt
+    mv LatestTag.txt /data7/DATA/LQAnalyzer_rootfiles_for_analysis/CATTag/LatestTag.txt
 else
     echo "Not adding a new tag"
 fi

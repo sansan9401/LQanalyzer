@@ -1,4 +1,4 @@
-tagpath=/data1/LQAnalyzer_rootfiles_for_analysis/CATTag/
+tagpath=/data7/DATA/LQAnalyzer_rootfiles_for_analysis/CATTag/
 if [ $HOSTNAME == "cmscluster.snu.ac.kr" ];
 then
     tagpath=/data4/LocalNtuples/LQAnalyzer_rootfiles_for_analysis/CATTag/

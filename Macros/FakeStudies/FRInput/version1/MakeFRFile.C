@@ -21,7 +21,7 @@ bool CheckHist(TH2* h);
 
 void MakeFRRootFile(){
   
-  TString path= "/data2/CAT_SKTreeOutput/JobOutPut/jalmond/LQanalyzer/data/output/CAT/FakeRateCalculator_El/periodCtoD/";
+  TString path= "/data7/DATA/CAT_SKTreeOutput/JobOutPut/jalmond/LQanalyzer/data/output/CAT/FakeRateCalculator_El/periodCtoD/";
 
 
   TFile * fdata = new TFile(path + "FakeRateCalculator_El_data_cat_v7-6-3.root");

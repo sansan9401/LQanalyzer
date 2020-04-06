@@ -24,7 +24,7 @@ for i in sampledir:
          os.system("mkdir " + poutput)
          os.system("mkdir " + poutput + "/output/")
          
-      os.system("ls /data2/DATA/cattoflat/Data/"+ version+ "/" + poutput + " > " + poutput + "/list.txt" )
+      os.system("ls /data7/DATA/cattoflat/Data/"+ version+ "/" + poutput + " > " + poutput + "/list.txt" )
       
       fr = open(poutput + "/list.txt" , 'r')
       counter=0
@@ -40,7 +40,7 @@ for i in sampledir:
             os.system("mkdir " + poutput+ "/" + str(j))
             
          configfile=open(poutput+ "/"  + str(j) + "/" + runscript,'w')
-         configfile.write(makeNtupleMakerH("/data2/DATA/cattoflat/Data/"+ version+ "/" + poutput,poutput+ "/list.txt",j, poutput, True))
+         configfile.write(makeNtupleMakerH("/data7/DATA/cattoflat/Data/"+ version+ "/" + poutput,poutput+ "/list.txt",j, poutput, True))
          configfile.close()
          
          configfileC=open(poutput+ "/" + str(j) + "/" + runscriptC,'w')
@@ -63,17 +63,17 @@ for i in sampledir:
                job_finised=True
 
 
-      if not (os.path.exists("/data2/DATA/cattoflat/skim/"+ version)):
-         os.system("mkdir " + "/data2/DATA/cattoflat/skim/"+ version)
+      if not (os.path.exists("/data7/DATA/cattoflat/skim/"+ version)):
+         os.system("mkdir " + "/data7/DATA/cattoflat/skim/"+ version)
 
 
-      if not (os.path.exists("/data2/DATA/cattoflat/skim/"+ version+ "/" + i)):
-                  os.system("mkdir " + "/data2/DATA/cattoflat/skim/"+ version+ "/" + i)
-      if not (os.path.exists("/data2/DATA/cattoflat/skim/"+ version+ "/" + poutput)):
-         os.system("mkdir " + "/data2/DATA/cattoflat/skim/"+ version+ "/" + poutput)
+      if not (os.path.exists("/data7/DATA/cattoflat/skim/"+ version+ "/" + i)):
+                  os.system("mkdir " + "/data7/DATA/cattoflat/skim/"+ version+ "/" + i)
+      if not (os.path.exists("/data7/DATA/cattoflat/skim/"+ version+ "/" + poutput)):
+         os.system("mkdir " + "/data7/DATA/cattoflat/skim/"+ version+ "/" + poutput)
 
-      print "Moving samples to /data2/DATA/cattoflat/skim/"+ version+ "/" + poutput    
-      os.system("mv "  +  poutput+ "/output/*.root /data2/DATA/cattoflat/skim/"+ version+ "/" + poutput )
+      print "Moving samples to /data7/DATA/cattoflat/skim/"+ version+ "/" + poutput    
+      os.system("mv "  +  poutput+ "/output/*.root /data7/DATA/cattoflat/skim/"+ version+ "/" + poutput )
    
       os.system("rm -r " + poutput)
     

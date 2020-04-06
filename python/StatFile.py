@@ -1,15 +1,15 @@
 import os,sys,getpass
 
 
-path_master="/data1/LQAnalyzer_rootfiles_for_analysis/CATAnalyzerStatistics/MasterFile_"+ os.getenv("CATVERSION") +".txt"
-path_skel_master="/data1/LQAnalyzer_rootfiles_for_analysis/CATAnalyzerStatistics/MasterFileSkeleton.txt"
+path_master="/data7/DATA/LQAnalyzer_rootfiles_for_analysis/CATAnalyzerStatistics/MasterFile_"+ os.getenv("CATVERSION") +".txt"
+path_skel_master="/data7/DATA/LQAnalyzer_rootfiles_for_analysis/CATAnalyzerStatistics/MasterFileSkeleton.txt"
 
 if not os.path.exists(path_master):
-    os.system("cp /data1/LQAnalyzer_rootfiles_for_analysis/CATAnalyzerStatistics/MasterFileSkeleton_newversion.txt " + path_master )
-    os.system("chmod 777 " + path_master)
+    os.system("cp /data7/DATA/LQAnalyzer_rootfiles_for_analysis/CATAnalyzerStatistics/MasterFileSkeleton_newversion.txt " + path_master )
+    os.system("chmod 666 " + path_master)
 
-if not os.path.exists("/data1/LQAnalyzer_rootfiles_for_analysis/CATAnalyzerStatistics/" + getpass.getuser()):
-    os.system("mkdir  /data1/LQAnalyzer_rootfiles_for_analysis/CATAnalyzerStatistics/" + getpass.getuser())
+if not os.path.exists("/data7/DATA/LQAnalyzer_rootfiles_for_analysis/CATAnalyzerStatistics/" + getpass.getuser()):
+    os.system("mkdir  /data7/DATA/LQAnalyzer_rootfiles_for_analysis/CATAnalyzerStatistics/" + getpass.getuser())
 
 from optparse import OptionParser
 parser = OptionParser()
@@ -18,8 +18,8 @@ parser.add_option("-x", "--x", dest="x", default="123",help="tag")
 (options, args) = parser.parse_args()
 filetag=options.x
     
-path_job="/data1/LQAnalyzer_rootfiles_for_analysis/CATAnalyzerStatistics/" + getpass.getuser() + "/statlog_time" + filetag + ".txt"
-path_tmpmaster="/data1/LQAnalyzer_rootfiles_for_analysis/CATAnalyzerStatistics/" + getpass.getuser() + "/MasterFile_tmp" + filetag + ".txt"
+path_job="/data7/DATA/LQAnalyzer_rootfiles_for_analysis/CATAnalyzerStatistics/" + getpass.getuser() + "/statlog_time" + filetag + ".txt"
+path_tmpmaster="/data7/DATA/LQAnalyzer_rootfiles_for_analysis/CATAnalyzerStatistics/" + getpass.getuser() + "/MasterFile_tmp" + filetag + ".txt"
 
 os.system("cp " + path_master + " " + path_tmpmaster)
 
@@ -27,8 +27,8 @@ os.system("cp " + path_master + " " + path_tmpmaster)
 file_job=open(path_job,"r")
 file_tmpmaster=open(path_tmpmaster,"r")
 
-path_cluster="/data1/LQAnalyzer_rootfiles_for_analysis/CATAnalyzerStatistics/" + getpass.getuser() + "/Cluster_" + filetag + ".txt"
-path_log="/data1/LQAnalyzer_rootfiles_for_analysis/CATAnalyzerStatistics/" + getpass.getuser() + "/Cluster_" + filetag + ".log"
+path_cluster="/data7/DATA/LQAnalyzer_rootfiles_for_analysis/CATAnalyzerStatistics/" + getpass.getuser() + "/Cluster_" + filetag + ".txt"
+path_log="/data7/DATA/LQAnalyzer_rootfiles_for_analysis/CATAnalyzerStatistics/" + getpass.getuser() + "/Cluster_" + filetag + ".log"
 
 
 
@@ -96,7 +96,7 @@ for line in file_job:
         memoryusage_p=splitline[1]
     if "memoryusage_v" ==  splitline[0]:
         memoryusage_v=splitline[1]
-    if "201" in line:
+    if "KST" in line:
         if "time" not in line:
             entries = line.split()
             month=entries[1]
@@ -120,11 +120,11 @@ if nclusterjobs == "":
 
 
 
-path_jobinfo="/data1/LQAnalyzer_rootfiles_for_analysis/CATAnalyzerStatistics/JobSummary_76x_"+month+"_"+year+".txt"
+path_jobinfo="/data7/DATA/LQAnalyzer_rootfiles_for_analysis/CATAnalyzerStatistics/JobSummary_76x_"+month+"_"+year+".txt"
 if not os.path.exists(path_jobinfo):
     with open(path_jobinfo, "w") as myfile:
           myfile.write("Summary of CatAnalyzer Processes: month="+month+" year=" +year+"\n")
-    os.system("chmod 777 " + path_jobinfo)
+    os.system("chmod 666 " + path_jobinfo)
 
 if len(sample) < 2:
     sample=stream+"_"+sample
@@ -163,13 +163,13 @@ for line in file_tmpmaster:
             newUser=False
         else:
             correctuser=False
-    if "Code:" in line:
-        if cycle in line:
-            correctCode=True
-            newCycle=False
-        else:
-            correctCode=False
     if correctuser:
+        if "Code:" in line:
+            if cycle in line:
+                correctCode=True
+                newCycle=False
+            else:
+                correctCode=False
         if correctCode:
             if sample in line:
                 splitline  = line.split()

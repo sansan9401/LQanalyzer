@@ -34,7 +34,7 @@ void MakeInputListForSubmitScript(){
     bool cluster = false;
     if(analysisdir.Contains("cmscluster.snu.ac.kr")) cluster=true;
 
-    TString dir = "ls /data2/DATA/cattoflat/MC/" + def_version + "/"+ mit->first + "/*.root > inputlist_lists.txt";
+    TString dir = "ls /data7/DATA/cattoflat/MC/" + def_version + "/"+ mit->first + "/*.root > inputlist_lists.txt";
     if(cluster) dir = "ls  /data4/DATA/FlatCatuples/MC/" + def_version + "/"+ mit->first + "/*.root > inputlist_lists.txt";
     
     system(dir.Data());
@@ -306,7 +306,7 @@ void MakeInputListForSubmitScript(){
   string lfile2 =  lqdir + "/LQRun/txt/list_all_mc_v7-6-6.sh";
 
   if(user.Contains("jalmond"))
-    gSystem->Exec(("cp " + lfile + "  /data1/LQAnalyzer_rootfiles_for_analysis/CATAnalysis/").Data());
+    gSystem->Exec(("cp " + lfile + "  /data7/DATA/LQAnalyzer_rootfiles_for_analysis/CATAnalysis/").Data());
   gSystem->Exec(("mv " + lfile +" " + lfile2).Data());
 
 

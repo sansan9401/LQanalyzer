@@ -12,38 +12,14 @@
 # Greet the user
 echo "Setting up environment for compiling/running LQAnalzer with SKTree"
 
-
 setupok=False
 
-while read line
-  do
-  if [[ $line == *"LANG"* ]]; then
-      setupok=True
-  fi
-done < ~/.bash_profile
-
-if [[ $setupok == "False" ]]; then
+if [[ "$LANG" != "en_US.utf-8" ]]; then
     echo "Please add the following lines to ~/.bash_profile file:"
     echo 'LANG="en_US.utf-8"'
     echo 'LC_COLLATE="lt_LT.utf-8"'
     echo 'LC_TIME="en_DK.utf-8"'
     return 1
-fi
-
-
-
-if [[ $PWD !=  *"/data4/LQAnalyzerCode/"* ]];
-then
-    if [ $HOSTNAME == "cmscluster.snu.ac.kr" ];
-    then
-        echo "Setup failed. LQanalyzer needs to be in /data4/LQAnalyzerCode/"$USER
-        if [ ! -d /data4/LQAnalyzerCode/$USER ]; then
-            mkdir /data4/LQAnalyzerCode/$USER
-        fi
-        echo "Move the current LQAnalyzer directory to "/data4/LQAnalyzerCode/$USER
-
-        return
-    fi
 fi
 
 
@@ -53,14 +29,12 @@ if [ $LQANALYZER_DIR ]; then
 fi
 
 ## variables that are specific to your machine: Change if noy listed
-if [ "$HOSTNAME" = "cms2.snu.ac.kr" ] || [ "$HOSTNAME" = "cms1.snu.ac.kr" ]; then    
-    source /share/apps/root_v5-34-32/root/bin/thisroot.sh 
-elif [ $HOSTNAME == "cmscluster.snu.ac.kr" ];
-then
-    source /share/apps/root_v5_34_32/root/bin/thisroot.sh
+if [ "$HOSTNAME" = "tamsa1" ] || [ "$HOSTNAME" = "tamsa2" ]; then
+    source /cvmfs/sft.cern.ch/lcg/app/releases/ROOT/5.34.36/x86_64-centos7-gcc48-opt/root/bin/thisroot.sh
 else
-    source /share/apps/root_v5-34-32/root/bin/thisroot.sh
-fi    
+    echo "Unknown host $HOSTNAME. exit..."
+    exit 1
+fi
 
 
 
@@ -78,16 +52,9 @@ alias sktree="bash submitSKTree.sh"
 alias new_git_tag="bash "$LQANALYZER_DIR"/scripts/setup/git_newtag.sh"
 alias git_commit_lq="bash scripts/setup/git_commit.sh"
 
-export LQANALYZER_FILE_DIR="/data1/LQAnalyzer_rootfiles_for_analysis/CATAnalysis/"
-export LQANALYZER_SKTreeLOG_DIR="/data1/LQAnalyzer_rootfiles_for_analysis/CATSKTreeMaker/"
-export CATTAGDIR="/data1/LQAnalyzer_rootfiles_for_analysis/CATTag/"
-if [ $HOSTNAME == "cmscluster.snu.ac.kr" ];
-then
-    export LQANALYZER_FILE_DIR="/data4/LocalNtuples/LQAnalyzer_rootfiles_for_analysis/CATAnalysis/"
-    export CATTAGDIR="/data4/LocalNtuples/LQAnalyzer_rootfiles_for_analysis/CATTag/"
-    export LQANALYZER_SKTreeLOG_DIR="/data4/LocalNtuples/LQAnalyzer_rootfiles_for_analysis/CATSKTreeMaker/"
-fi
-
+export LQANALYZER_FILE_DIR="/data7/DATA/LQAnalyzer_rootfiles_for_analysis/CATAnalysis/"
+export LQANALYZER_SKTreeLOG_DIR="/data7/DATA/LQAnalyzer_rootfiles_for_analysis/CATSKTreeMaker/"
+export CATTAGDIR="/data7/DATA/LQAnalyzer_rootfiles_for_analysis/CATTag/"
 
 
 # Modify to describe your directory structure.
@@ -101,27 +68,8 @@ export LQANALYZER_CORE_PATH=${LQANALYZER_DIR}/LQCore/
 export isSLC5="False"
 export BTAGDIR=${LQANALYZER_DIR}/BTag/BTagC11/
 export ROCHDIR=${LQANALYZER_DIR}/rochcor2015/rochcor2015C11/
-if [[ "$HOSTNAME" == "cms.snu.ac.kr" ]];
-then 
-    export OBJ=obj/cms21
-    export LQANALYZER_LIB_PATH=${LQANALYZER_DIR}/LQLib/cms21
-    
-elif [ $HOSTNAME == "cmscluster.snu.ac.kr" ];
-    then
-    export OBJ=obj/cluster/
-    export LQANALYZER_LIB_PATH=${LQANALYZER_DIR}/LQLib/cluster/
-
-elif [[ "$HOSTNAME" == "cms1" ]];
-then
-    export OBJ=obj/cms1
-    export LQANALYZER_LIB_PATH=${LQANALYZER_DIR}/LQLib/cms1/
-
-else
-    export OBJ=obj/cms2
-    export LQANALYZER_LIB_PATH=${LQANALYZER_DIR}/LQLib/cms2/
-
-fi
-
+export OBJ=obj/cms21
+export LQANALYZER_LIB_PATH=${LQANALYZER_DIR}/LQLib/cms21    
 export LQANALYZER_OLDLIB_PATH=${LQANALYZER_DIR}/LQLib/
 
 export LQANALYZER_RUN_PATH=${LQANALYZER_DIR}/LQRun/
@@ -159,16 +107,10 @@ fi
 source ${LQANALYZER_BIN_PATH}/cleanup.sh 
 ### make directories that git does not allow to store
 
-export LQANALYZER_OUTPUT_PATH=/data2/CAT_SKTreeOutput/JobOutPut/${USER}/LQanalyzer/data/output/
+export LQANALYZER_OUTPUT_PATH=/data7/DATA/CAT_SKTreeOutput/JobOutPut/${USER}/LQanalyzer/data/output/
 
-export LQANALYZER_LOG_PATH=/data2/CAT_SKTreeOutput/JobOutPut/${USER}/LQanalyzer/data/logfiles/
+export LQANALYZER_LOG_PATH=/data7/DATA/CAT_SKTreeOutput/JobOutPut/${USER}/LQanalyzer/data/logfiles/
 export LQANALYZER_LOG_8TeV_PATH=${LQANALYZER_DIR}/data/logfiles/
-
-if [ $HOSTNAME == "cmscluster.snu.ac.kr" ];
-    then
-    export LQANALYZER_OUTPUT_PATH=/data4/CAT_SKTreeOutput/JobOutPut/${USER}/LQanalyzer/data/output/
-    export LQANALYZER_LOG_PATH=/data4/CAT_SKTreeOutput/JobOutPut/${USER}/LQanalyzer/data/logfiles/
-fi
 
 python ${LQANALYZER_BIN_PATH}/SetUpWorkSpace.py
 

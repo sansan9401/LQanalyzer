@@ -26,9 +26,9 @@ if not LQANALYZER_DIR == "None" :
 	EightTeVdataOne="/data1/" + getpass.getuser() + "/LQ_SKTreeOutput/"
 	EightTeVdataTwo="/data2/" + getpass.getuser() + "/LQ_SKTreeOutput/"
 	 
-	CleanUpLogs("/data1/CAT_SKTreeOutput/" + getpass.getuser()+ "/")
-	CleanUpLogs("/data2/CAT_SKTreeOutput/" + getpass.getuser()+ "/")
-	CleanUpLogs("/data1/LQAnalyzer_rootfiles_for_analysis/CATAnalyzerStatistics/"+ getpass.getuser()+ "/")
+	CleanUpLogs("/data7/DATA/CAT_SKTreeOutput/" + getpass.getuser()+ "/")
+	CleanUpLogs("/data7/DATA/CAT_SKTreeOutput/" + getpass.getuser()+ "/")
+	CleanUpLogs("/data7/DATA/LQAnalyzer_rootfiles_for_analysis/CATAnalyzerStatistics/"+ getpass.getuser()+ "/")
 	CleanUpJobLogs(LQANALYZER_LOG)
 	CleanUpLogs(EightTeVdataOne)
 	CleanUpLogs(EightTeVdataTwo)	

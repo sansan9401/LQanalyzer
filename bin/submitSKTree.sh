@@ -63,8 +63,8 @@ set_sktreemaker_debug=false
 
 
 TXTPATH=${LQANALYZER_RUN_PATH}"/txt/datasets_snu_"
-FLATCAT_MC="/data2/DATA/cattoflat/MC/"
-SKTREE_MC="/data2/CatNtuples/"
+FLATCAT_MC="/data7/DATA/cattoflat/MC/"
+SKTREE_MC="/data7/DATA/CatNtuples/"
 if [ $HOSTNAME == "cmscluster.snu.ac.kr" ];
 then
     TXTPATH=${LQANALYZER_RUN_PATH}"/txt/Cluster/datasets_snu_cluster_"
@@ -357,7 +357,7 @@ if [[ $submit_file_tag  != ""  ]];
 	      do
 	      while read oline
 		do
-		if [[ $oline == *"/data2/DATA/cattoflat/MC/"* ]];
+		if [[ $oline == *"/data7/DATA/cattoflat/MC/"* ]];
 		    then
 		    osline=$(echo $oline | head -n1 | awk '{print $1}')
 		    
@@ -726,9 +726,9 @@ if [[ $submit_analyzer_name == "SKTreeMakerTriLep" ]];
 
 fi
 
-outdir="/data2/CAT_SKTreeOutput/JobOutPut/"$USER"/LQanalyzer/"
+outdir="/data7/DATA/CAT_SKTreeOutput/JobOutPut/"$USER"/LQanalyzer/"
 if [[ ! -d "${outdir}" ]]; then
-    mkdir "/data2/CAT_SKTreeOutput/JobOutPut/"$USER
+    mkdir "/data7/DATA/CAT_SKTreeOutput/JobOutPut/"$USER
     mkdir ${outdir}
 fi
 

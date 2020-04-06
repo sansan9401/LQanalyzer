@@ -89,7 +89,7 @@ getinfo_string=""
 #
 #      do
 #      data_isok=false
-#      slined="/data2/DATA/cattoflat/Data/"
+#      slined="/data7/DATA/cattoflat/Data/"
 #      if [[ $job_skim == *"No"* ]];
 #          then
 #          echo "LQanalyzer::sktree :: ERROR :: There are no NoCut skims for "$idlist
@@ -98,11 +98,11 @@ getinfo_string=""
 #      fi
 #      if [[ $job_skim == *"Lepton"* ]];
 #          then
-#          slined="/data2/CatNtuples/"${submit_version_tag}"/SKTrees/Data/"
+#          slined="/data7/DATA/CatNtuples/"${submit_version_tag}"/SKTrees/Data/"
 #      fi
 #      if [[ $job_skim == *"DiLep"* ]];
 #          then
-#          slined="/data2/CatNtuples/"${submit_version_tag}"/SKTrees/DataDiLep/"
+#          slined="/data7/DATA/CatNtuples/"${submit_version_tag}"/SKTrees/DataDiLep/"
 #      fi
 #      
 #      dirtag_date=$idlist
@@ -393,11 +393,11 @@ function print_tag_diff_twotags
 
 function print_sktreemaker_logfile
 {
-    if [[ -f /data1/LQAnalyzer_rootfiles_for_analysis/CATSKTreeMaker/${submit_analyzer_name}_${submit_catvlist}.log ]]; then
+    if [[ -f /data7/DATA/LQAnalyzer_rootfiles_for_analysis/CATSKTreeMaker/${submit_analyzer_name}_${submit_catvlist}.log ]]; then
 	while read line
 	  do
 	  echo $line
-	done < /data1/LQAnalyzer_rootfiles_for_analysis/CATSKTreeMaker/${submit_analyzer_name}_${submit_catvlist}.log 
+	done < /data7/DATA/LQAnalyzer_rootfiles_for_analysis/CATSKTreeMaker/${submit_analyzer_name}_${submit_catvlist}.log 
     else
 	echo "Invalid input:"
 	echo "sktree -sktreelog <analyzername> <catversion> (i.ie, sktree -sktreelog SKTreeMakerDiLep v7-6-4)"

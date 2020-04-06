@@ -1,9 +1,9 @@
 copy_command=""
 if [[ $HOSTNAME == "cmscluster.snu.ac.kr" ]];
 then
-    ssh jalmond@cms3.snu.ac.kr 'ls /data1/LQAnalyzer_rootfiles_for_analysis/CATAnalysis/' >nonlocal_check.txt
+    ssh jalmond@cms3.snu.ac.kr 'ls /data7/DATA/LQAnalyzer_rootfiles_for_analysis/CATAnalysis/' >nonlocal_check.txt
     ls $LQANALYZER_FILE_DIR/ > local_check.txt
-    copy_command=jalmond@cms3.snu.ac.kr:/data1/LQAnalyzer_rootfiles_for_analysis/CATAnalysis/
+    copy_command=jalmond@cms3.snu.ac.kr:/data7/DATA/LQAnalyzer_rootfiles_for_analysis/CATAnalysis/
 else 
     ssh jalmond@147.47.242.67 'ls /data4/LocalNtuples/LQAnalyzer_rootfiles_for_analysis/CATAnalysis/' >nonlocal_check.txt
     ls $LQANALYZER_FILE_DIR/ > local_check.txt

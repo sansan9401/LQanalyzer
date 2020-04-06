@@ -4,9 +4,9 @@ def makeEmail(users, version, type):
     config= 'Dear ' + users + ',\n'
     config+= '\n'
     if "MC" in type:
-        config+='The MC skims for catversion ' + version + ' are now ready at /data2/DATA/cattoflat/skim/' + version +'/'    
+        config+='The MC skims for catversion ' + version + ' are now ready at /data7/DATA/cattoflat/skim/' + version +'/'    
     else:
-        config+='The skims for catversion ' + version + ' are now ready at /data2/DATA/cattoflat/skim/' + version +'/'    
+        config+='The skims for catversion ' + version + ' are now ready at /data7/DATA/cattoflat/skim/' + version +'/'    
     config+= '\n'
     config+= 'Thanks,\n'
     config+= 'John,\n'
@@ -17,7 +17,7 @@ def makeEmail(users, version, type):
 
         lumilist=open("/home/jalmond/HeavyNeutrino/13TeV/LQAnalyzer_cat/LQanalyzer/LQRun/txt/datasets_snu_CAT_mc_"+ version+".txt","r")
         for line in lumilist:
-            if "/data2/DATA/cattoflat/MC/" in line:
+            if "/data7/DATA/cattoflat/MC/" in line:
                 config+= line 
     
     return config

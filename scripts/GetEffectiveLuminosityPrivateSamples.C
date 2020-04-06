@@ -64,7 +64,7 @@ void GetEffectiveLuminosityPrivateSamples(){
     if(mitv== catversion_map.end()) {cout << "Error in naming datasets in map" << endl; return;}
     version= mitv->second;
     
-    TString dir = "ls /data2/DATA/cattoflat/MC/" + version + "/"+ mit->first + "/*.root > inputlist_private.txt";
+    TString dir = "ls /data7/DATA/cattoflat/MC/" + version + "/"+ mit->first + "/*.root > inputlist_private.txt";
     
     bool use_sum_genweight(false);
     if(mit->first.Contains("amcatnlo")) use_sum_genweight=true;
@@ -88,9 +88,9 @@ void GetEffectiveLuminosityPrivateSamples(){
       sum_of_weights = number_events_processed;
       if(number_events_processed ==0 ) {
 	cout << "Problem with input files. Are they in the correct local path?" << endl;
-        cout <<"FlatCatuples: /data2/DATA/cattoflat/MC/CATVERSION/" << endl;
-        cout <<"SKTrees: Lepton Skim : /data2/CatNtuples/CATVERSION/SKTrees/MC/" << endl;
-        cout <<"SKTrees:DiLepton Skim : /data2/CatNtuples/CATVERSION/SKTrees/MCDiLep/" << endl;
+        cout <<"FlatCatuples: /data7/DATA/cattoflat/MC/CATVERSION/" << endl;
+        cout <<"SKTrees: Lepton Skim : /data7/DATA/CatNtuples/CATVERSION/SKTrees/MC/" << endl;
+        cout <<"SKTrees:DiLepton Skim : /data7/DATA/CatNtuples/CATVERSION/SKTrees/MCDiLep/" << endl;
         return;
       }
     }
@@ -103,9 +103,9 @@ void GetEffectiveLuminosityPrivateSamples(){
       }
       if(number_events_processed ==0 ) {
 	cout << "Problem with input files. Are they in the correct local path?" << endl;
-	cout <<"FlatCatuples: /data2/DATA/cattoflat/MC/CATVERSION/" << endl;
-	cout <<"SKTrees: Lepton Skim : /data2/CatNtuples/CATVERSION/SKTrees/MC/" << endl;
-	cout <<"SKTrees:DiLepton Skim : /data2/CatNtuples/CATVERSION/SKTrees/MCDiLep/" << endl;
+	cout <<"FlatCatuples: /data7/DATA/cattoflat/MC/CATVERSION/" << endl;
+	cout <<"SKTrees: Lepton Skim : /data7/DATA/CatNtuples/CATVERSION/SKTrees/MC/" << endl;
+	cout <<"SKTrees:DiLepton Skim : /data7/DATA/CatNtuples/CATVERSION/SKTrees/MCDiLep/" << endl;
 	return;
       }
       TString command1 = "rm -r "+ mit->first;
@@ -131,7 +131,7 @@ void GetEffectiveLuminosityPrivateSamples(){
       
       
       TString command4 = "rm log/checkoutput_private.txt";
-      TString command5= "ls   /data2/DATA/cattoflat/MC/" + version + "/"+ mit->first + "/  > log/checkoutput_private.txt";
+      TString command5= "ls   /data7/DATA/cattoflat/MC/" + version + "/"+ mit->first + "/  > log/checkoutput_private.txt";
       system(command4.Data());
       system(command5.Data());
       TString filename_fs = "log/checkoutput_private.txt";
@@ -142,7 +142,7 @@ void GetEffectiveLuminosityPrivateSamples(){
 	name_file >> filen;
 	if(TString(filen).Contains(".root"))counter++;
       }
-      cout << "Number of files in /data2/DATA/cattoflat/MC/" + version + "/"+ mit->first + "/ = " << counter << endl;
+      cout << "Number of files in /data7/DATA/cattoflat/MC/" + version + "/"+ mit->first + "/ = " << counter << endl;
      
       bool JobDone=false;
       while (JobDone==false){
@@ -208,7 +208,7 @@ void GetEffectiveLuminosityPrivateSamples(){
     std::map<TString, Double_t>::iterator mit3 = xsmap.find(mit->first);    
     std::map<TString, Double_t>::iterator mit4 = neventmap.find(mit->first);    
     std::map<TString, Double_t>::iterator mit5 = n_w_eventmap.find(mit->first);    
-    lumi_file <<  mit2->second << "  " << mit4->second << " " << mit5->second << " " <<  mit3->second <<" "  << mit->second << "  /data2/DATA/cattoflat/MC/" << version <<"/"  << mit->first << "/" <<endl;
+    lumi_file <<  mit2->second << "  " << mit4->second << " " << mit5->second << " " <<  mit3->second <<" "  << mit->second << "  /data7/DATA/cattoflat/MC/" << version <<"/"  << mit->first << "/" <<endl;
   }
 
   lumi_file << "" << endl;
@@ -219,7 +219,7 @@ void GetEffectiveLuminosityPrivateSamples(){
     std::map<TString, Double_t>::iterator mit3 = xsmap.find(mit->first);
     std::map<TString, Double_t>::iterator mit4 = neventmap.find(mit->first);
     std::map<TString, Double_t>::iterator mit5 = n_w_eventmap.find(mit->first);
-    lumi_file <<  "SK" << mit2->second << "  " << mit4->second << " " << mit5->second << " " <<  mit3->second <<" "  << mit->second << " /data2/CatNtuples/" + string(version.Data()) +"/SKTrees/MC/" << mit2->second << "/" <<endl;
+    lumi_file <<  "SK" << mit2->second << "  " << mit4->second << " " << mit5->second << " " <<  mit3->second <<" "  << mit->second << " /data7/DATA/CatNtuples/" + string(version.Data()) +"/SKTrees/MC/" << mit2->second << "/" <<endl;
   }
 
   
@@ -231,7 +231,7 @@ void GetEffectiveLuminosityPrivateSamples(){
     std::map<TString, Double_t>::iterator mit3 = xsmap.find(mit->first);
     std::map<TString, Double_t>::iterator mit4 = neventmap.find(mit->first);
     std::map<TString, Double_t>::iterator mit5 = n_w_eventmap.find(mit->first);
-    lumi_file <<  "SK" << mit2->second << "_dilep  " << mit4->second << " " << mit5->second << " " <<  mit3->second <<" "  << mit->second << " /data2/CatNtuples/" + string(version.Data()) +"/SKTrees/MCDiLep/" <<  mit2->second << "/" <<endl;
+    lumi_file <<  "SK" << mit2->second << "_dilep  " << mit4->second << " " << mit5->second << " " <<  mit3->second <<" "  << mit->second << " /data7/DATA/CatNtuples/" + string(version.Data()) +"/SKTrees/MCDiLep/" <<  mit2->second << "/" <<endl;
   }
   
 

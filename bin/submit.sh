@@ -46,14 +46,14 @@ then
 	
 	tagger=$RANDOM
 
-	statdir="/data1/LQAnalyzer_rootfiles_for_analysis/CATAnalyzerStatistics/"$USER
+	statdir="/data7/DATA/LQAnalyzer_rootfiles_for_analysis/CATAnalyzerStatistics/"$USER
 	if [[ ! -d "${statdir}" ]]; then
 	    mkdir ${statdir}
 	fi
 
 
-	logfile=/data1/LQAnalyzer_rootfiles_for_analysis/CATAnalyzerStatistics/$USER/statlog$tagger.txt
-	logfile_time=/data1/LQAnalyzer_rootfiles_for_analysis/CATAnalyzerStatistics/$USER/statlog_time$tagger.txt
+	logfile=/data7/DATA/LQAnalyzer_rootfiles_for_analysis/CATAnalyzerStatistics/$USER/statlog$tagger.txt
+	logfile_time=/data7/DATA/LQAnalyzer_rootfiles_for_analysis/CATAnalyzerStatistics/$USER/statlog_time$tagger.txt
 	echo "user "$USER >> $logfile
 	echo $cycle >> $logfile
 	echo $catversion >> $logfile
@@ -68,8 +68,8 @@ then
 	python ${LQANALYZER_DIR}/python/CheckCluster.py  -x $tagger
 	python ${LQANALYZER_DIR}/python/localsubmit.py -p ${i} ${stream} ${njobs} ${cycle} ${logstep} ${data_lumi} ${outputdir} ${remove} ${loglevel} ${skipevent} ${nevents} ${totalev} ${xsec} ${targetlumi} ${efflumi} ${remove} ${skinput} ${runevent} ${useCATv742ntuples} ${LibList} ${DEBUG} ${useskim} ${runnp} ${runcf} ${catversion} ${skflag} ${usebatch} -X ${tagger} 
 	python ${LQANALYZER_DIR}/python/StatFile.py -x $tagger
-	rm $logfile
-	rm $logfile_time
+	#rm $logfile
+	#rm $logfile_time
     done 
   
 elif [[ $1  == "--help"  || $1  == "--h" ]]; then                 
@@ -79,12 +79,12 @@ else
     for i in ${input_samples[@]}
     do
 	tagger=$RANDOM
-        statdir="/data1/LQAnalyzer_rootfiles_for_analysis/CATAnalyzerStatistics/"$USER
+        statdir="/data7/DATA/LQAnalyzer_rootfiles_for_analysis/CATAnalyzerStatistics/"$USER
         if [[ ! -d "${statdir}" ]]; then
             mkdir ${statdir}
         fi
-	logfile=/data1/LQAnalyzer_rootfiles_for_analysis/CATAnalyzerStatistics/$USER/statlog$tagger.txt
-	logfile_time=/data1/LQAnalyzer_rootfiles_for_analysis/CATAnalyzerStatistics/$USER/statlog_time$tagger.txt
+	logfile=/data7/DATA/LQAnalyzer_rootfiles_for_analysis/CATAnalyzerStatistics/$USER/statlog$tagger.txt
+	logfile_time=/data7/DATA/LQAnalyzer_rootfiles_for_analysis/CATAnalyzerStatistics/$USER/statlog_time$tagger.txt
 	echo "user "$USER >> $logfile
 	echo $cycle >> $logfile
 	echo $catversion >> $logfile

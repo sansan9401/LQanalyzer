@@ -97,7 +97,7 @@ void ExampleAnalyzerDiMuon::ExecuteEvents()throw( LQError ){
    /// #### CAT::: triggers stored are all HLT_Ele/HLT_DoubleEle/HLT_Mu/HLT_TkMu/HLT_Photon/HLT_DoublePhoton
 
    std::vector<TString> triggerslist;
-   triggerslist.push_back("HLT_IsoMu20_v2");
+   triggerslist.push_back("HLT_IsoMu20_v");
    if(PassTrigger(triggerslist, prescale))   FillHist("HLT_IsoMu20_v2", 1 , weight, 0. , 2., 2);
 
    std::vector<TString> triggerslist2;

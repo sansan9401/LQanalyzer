@@ -74,7 +74,7 @@ file_list_all="/home/jalmond/HeavyNeutrino/13TeV/LQAnalyzer_cat/LQanalyzer/LQRun
 missing_sample="False"
 for line in open(file_list_all, 'r'):
     
-    if ("/data2/DATA/cattoflat/MC/" + version +"/") in line:
+    if ("/data7/DATA/cattoflat/MC/" + version +"/") in line:
         sample_in_list="False"
         for i in sampledir:
             if i in line:
@@ -95,7 +95,7 @@ for i in sampledir:
    output=i
    print "Making dir: " + output
 
-   if (os.path.exists("/data2/DATA/cattoflat/skim/"+ version+ "/" + i)):
+   if (os.path.exists("/data7/DATA/cattoflat/skim/"+ version+ "/" + i)):
       continue
    
    if not (os.path.exists(output)):
@@ -107,7 +107,7 @@ for i in sampledir:
       os.system("mkdir " + output + "/output/")
               
       
-   os.system("ls /data2/DATA/cattoflat/MC/" + version + "/" + i + " > " + output + "/list.txt" )
+   os.system("ls /data7/DATA/cattoflat/MC/" + version + "/" + i + " > " + output + "/list.txt" )
 
    fr = open(output + "/list.txt" , 'r')
    counter=0
@@ -125,7 +125,7 @@ for i in sampledir:
          os.system("mkdir " + output+ "/" + str(j))
          
       configfile=open(output+ "/"  + str(j) + "/" + runscript,'w')
-      configfile.write(makeNtupleMakerH("/data2/DATA/cattoflat/MC/" + version + "/"+ output,output+ "/list.txt",j, output,False))
+      configfile.write(makeNtupleMakerH("/data7/DATA/cattoflat/MC/" + version + "/"+ output,output+ "/list.txt",j, output,False))
       configfile.close()
 
       configfileC=open(output+ "/" + str(j) + "/" + runscriptC,'w')
@@ -148,15 +148,15 @@ for i in sampledir:
             job_finised=True
 
 
-   if not (os.path.exists("/data2/DATA/cattoflat/skim/"+ version)):
-      os.system("mkdir " + "/data2/DATA/cattoflat/skim/" + version)
+   if not (os.path.exists("/data7/DATA/cattoflat/skim/"+ version)):
+      os.system("mkdir " + "/data7/DATA/cattoflat/skim/" + version)
           
-   if not (os.path.exists("/data2/DATA/cattoflat/skim/"+ version+ "/" + i)):
-      os.system("mkdir " + "/data2/DATA/cattoflat/skim/" + version+ "/"+ i)
+   if not (os.path.exists("/data7/DATA/cattoflat/skim/"+ version+ "/" + i)):
+      os.system("mkdir " + "/data7/DATA/cattoflat/skim/" + version+ "/"+ i)
 
       
-   print "Moving samples to /data2/DATA/cattoflat/skim/" + version+ "/"+ i    
-   os.system("mv "  +  output+ "/output/*.root /data2/DATA/cattoflat/skim/"+ version+ "/" + i )
-   print "mv "  +  output+ "/output/*.root /data2/DATA/cattoflat/skim/" + version+ "/"+ i 
+   print "Moving samples to /data7/DATA/cattoflat/skim/" + version+ "/"+ i    
+   os.system("mv "  +  output+ "/output/*.root /data7/DATA/cattoflat/skim/"+ version+ "/" + i )
+   print "mv "  +  output+ "/output/*.root /data7/DATA/cattoflat/skim/" + version+ "/"+ i 
    
    os.system("rm -rf " + output)

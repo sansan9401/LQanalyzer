@@ -1,7 +1,7 @@
 # Specify_location_of_data/mc 
-mcpath          /data2/CAT_SKTreeOutput/JobOutPut/jalmond/LQanalyzer//data/output/CAT/SKTreeValidation/periodCtoD/ 
-datapath        /data2/CAT_SKTreeOutput/JobOutPut/jalmond/LQanalyzer//data/output/CAT/SKTreeValidation/periodCtoD/SKTreeValidation_data_DoubleEG_cat_v7-6-6.root 
-datadrivenpath  /data2/CAT_SKTreeOutput/JobOutPut/jalmond/LQanalyzer//data/output/CAT/SKTreeValidation/periodCtoD/ 
+mcpath          /data7/DATA/CAT_SKTreeOutput/JobOutPut/jalmond/LQanalyzer//data/output/CAT/SKTreeValidation/periodCtoD/ 
+datapath        /data7/DATA/CAT_SKTreeOutput/JobOutPut/jalmond/LQanalyzer//data/output/CAT/SKTreeValidation/periodCtoD/SKTreeValidation_data_DoubleEG_cat_v7-6-6.root 
+datadrivenpath  /data7/DATA/CAT_SKTreeOutput/JobOutPut/jalmond/LQanalyzer//data/output/CAT/SKTreeValidation/periodCtoD/ 
 # Specify_the_list_of_hists_to_plot 
 plottingpath    dat/hn_histfile.txt 
 cutpath         dat/hn_cut_POGTight_DiElectron_puW.txt 

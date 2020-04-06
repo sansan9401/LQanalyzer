@@ -25,8 +25,8 @@ Reweight::Reweight(TString filename){
   fileData_ = TFile::Open( filename, "READ");
   if (!fileData_) cout << "\n\nAt least one of the Nvtx reweighting files could not be opened!\n\n";
 
-  TString filenamedown =  "/data1/LQAnalyzer_rootfiles_for_analysis/CatOct15/SNUCAT_Pileup.root";
-  TString filenameup = "/data1/LQAnalyzer_rootfiles_for_analysis/CatOct15/SNUCAT_Pileup.root";
+  TString filenamedown =  "/data7/DATA/LQAnalyzer_rootfiles_for_analysis/CatOct15/SNUCAT_Pileup.root";
+  TString filenameup = "/data7/DATA/LQAnalyzer_rootfiles_for_analysis/CatOct15/SNUCAT_Pileup.root";
   //fileDataUP_ = TFile::Open(filenameup , "READ");
   //if (!fileData_) cout << "\n\nAt least one of the Nvtx reweighting files could not be opened!\n\n";
   //fileDataDOWN_ = TFile::Open( filenamedown, "READ");
