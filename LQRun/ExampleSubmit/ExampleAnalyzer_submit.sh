@@ -1,15 +1,15 @@
 #!/bin/sh
 
 ###### SET WHAT JOBS TO RUN
-runMC=false
+runMC=true
 runDoubleElectron=true
 if [[ $runMC  == "true" ]]; 
 then
     source functions.sh
-    cycle="ExampleAnalyzerDiElectron"
+    cycle="ExampleAnalyzer"
     skinput="True"
     #useskim="DiLep"
-    outputdir=$LQANALYZER_DIR"/data/output/Electron/"
+    outputdir=$LQANALYZER_DIR"/data/output/Example/"
     #### JOB CONFIGURATION
     njobs=30
     data_lumi="AtoD"
@@ -17,8 +17,7 @@ then
     logstep=1000
     
     #declare -a input_samples=("DY10to50" "DY50plus" "ttbar" "Wjets" "WZ" "ZZ" "WW" "QCD_30-40_EM2" "QCD_40_EM2" "Wgamma")
-    declare -a input_samples=("DY10to50" "DY50plus" "ttbar" "WZ" "ZZ" "WW")
-    declare -a input_samples=("WZ_py")
+    declare -a input_samples=("DY10to50" "DY50plus" "ttbar" "WZ_py" "ZZ_py" "WW_py")
     source submit.sh $1
 fi
     
@@ -28,11 +27,11 @@ fi
 if [[ $runDoubleElectron  == "true" ]];
 then
     source functions.sh
-    cycle="ExampleAnalyzerDiElectron"
-#    skinput="True"
+    cycle="ExampleAnalyzer"
+    skinput="True"
     stream="muon"
 #    useskim="DiLep"
-    outputdir=$LQANALYZER_DIR"/data/output/Electron/"
+    outputdir=$LQANALYZER_DIR"/data/output/Example/"
     #### JOB CONFIGURATION
     njobs=30
     data_lumi="AtoD"
@@ -40,7 +39,7 @@ then
     logstep=1000
 
     declare -a input_samples=("A" "B" "C" "D")
-     declare -a input_samples=("A" )
+    #declare -a input_samples=("A" )
     source submit.sh $1
 fi     
 

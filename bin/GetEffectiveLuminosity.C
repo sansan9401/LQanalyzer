@@ -203,7 +203,7 @@ void GetEffectiveLuminosity() {
   for(std::map<TString, double>::const_iterator mit = dirmap.begin(); mit != dirmap.end();mit++){
     
     
-    TString dir = "ls /data4/DATA/LQNtuples/LQNtuples_5_3_14_snu27_2016/MC/" + TString(mit->first) + "/*.root > inputlist.txt";
+    TString dir = "ls /data7/DATA/LQNtuples/LQNtuples_5_3_14_snu27_2016/MC/" + TString(mit->first) + "/*.root > inputlist.txt";
 
 
     system(dir.Data());

@@ -12,20 +12,6 @@
 # Greet the user
 echo "Setting up environment for compiling/running LQAnalzer with SKTree"
 
-if [[ $PWD !=  *"/data4/LQAnalyzerCode/"* ]];
-then
-    if [ $HOSTNAME == "tamsa2.snu.ac.kr" ];
-    then
-	echo "Setup failed. LQanalyzer needs to be in /data4/LQAnalyzerCode/"$USER
-	if [ ! -d /data4/LQAnalyzerCode/$USER ]; then
-	    mkdir /data4/LQAnalyzerCode/$USER
-	fi
-	echo "Move the current LQAnalyzer directory to "/data4/LQAnalyzerCode/$USER
-
-	return 
-    fi
-fi
-
 if [ $LQANALYZER_DIR ]; then
     echo LQANALYZER_DIR is already defined, use a clean shell
     return 1
@@ -33,26 +19,18 @@ fi
 
 
 ## variables that are specific to your machine: Change if noy listed
-if [ "$HOSTNAME" = "cms2.snu.ac.kr" ] || [ "$HOSTNAME" = "cms1.snu.ac.kr" ]; then    
-    export root_setup="/usr/local/bin/thisroot.sh"
-elif [ $HOSTNAME == "tamsa2.snu.ac.kr" ];
-then 
-    source /share/apps/root_v5_34_32/root/bin/thisroot.sh
+if [ "$HOSTNAME" = "tamsa1" ] || [ "$HOSTNAME" = "tamsa2" ]; then
+    source /cvmfs/sft.cern.ch/lcg/app/releases/ROOT/5.34.36/x86_64-centos7-gcc48-opt/root/bin/thisroot.sh
 else
-    export root_setup=$HOME"/root/root/bin/thisroot.sh"
-fi    
+    echo "Unknown host $HOSTNAME. exit..."
+    exit 1
+fi
 
 
 # speficy the LQANALYZER_DIR base directory, i.e., the directory in which this file lives
 export LQANALYZER_DIR=${PWD}
 
-
-export LQANALYZER_FILE_DIR="/data1/LQAnalyzer_rootfiles_for_analysis/Dec14/"
-
-if [ $HOSTNAME == "tamsa2.snu.ac.kr" ];
-then
-    export LQANALYZER_FILE_DIR="/data4/LocalNtuples/LQAnalyzer_rootfiles_for_analysis/LQAnalysis/April15/"
-fi
+export LQANALYZER_FILE_DIR="/data7/DATA/LQAnalyzer_rootfiles_for_analysis/LQAnalysis/April15/"
 
 # Modify to describe your directory structure.
 # all directories are below the LQAnalyser base directory specified above
@@ -62,42 +40,8 @@ export LQANALYZER_SRC_PATH=${LQANALYZER_DIR}/LQAnalysis/src/
 export LQANALYZER_INCLUDE_PATH=${LQANALYZER_DIR}/LQAnalysis/include/
 export LQANALYZER_CORE_PATH=${LQANALYZER_DIR}/LQCore/
 
-if [[ "$HOSTNAME" == "cms1" ]];
-then 
-    export OBJ=obj/slc6_cms1
-    export LQANALYZER_LIB_PATH=${LQANALYZER_DIR}/LQLib/slc6_cms1
-
-elif [ $HOSTNAME == "tamsa2.snu.ac.kr" ];
-    then
-    export OBJ=obj/cluster/
-    export LQANALYZER_LIB_PATH=${LQANALYZER_DIR}/LQLib/cluster/
-
-elif [[ "$HOSTNAME" == "cms5" ]];
-then
-    export OBJ=obj/slc6_cms5
-    export LQANALYZER_LIB_PATH=${LQANALYZER_DIR}/LQLib/slc6_cms5/
-    
-elif [[  "$HOSTNAME" == "cms6" ]];
-then
-    export OBJ=obj/slc6_cms6
-    export LQANALYZER_LIB_PATH=${LQANALYZER_DIR}/LQLib/slc6_cms6/
-
-elif [[ "$HOSTNAME" == "cms3" ]];
-then
-    export OBJ=obj/slc5_cms3
-    export LQANALYZER_LIB_PATH=${LQANALYZER_DIR}/LQLib/slc5_cms3/
-elif [[ "$HOSTNAME" == "cms4" ]];
-then
-    export OBJ=obj/slc5_cms4
-    export LQANALYZER_LIB_PATH=${LQANALYZER_DIR}/LQLib/slc5_cms4/
-elif [[ "$HOSTNAME" == "cms2" ]];
-then
-    export OBJ=obj/slc5_cms2
-    export LQANALYZER_LIB_PATH=${LQANALYZER_DIR}/LQLib/slc5_cms2/
-else
-    export OBJ=obj/clustertmp/
-    export LQANALYZER_LIB_PATH=${LQANALYZER_DIR}/LQLib/clustertmp/
-fi
+export OBJ=obj/cluster/
+export LQANALYZER_LIB_PATH=${LQANALYZER_DIR}/LQLib/cluster/
 
 export LQANALYZER_OLDLIB_PATH=${LQANALYZER_DIR}/LQLib/
 export LQANALYZER_RUN_PATH=${LQANALYZER_DIR}/LQRun/
@@ -139,16 +83,10 @@ fi
 ### make directories that git does not allow to store
 
 
-export LQANALYZER_OUTPUT_PATH=/data2/LQ_SKTreeOutput/JobOutPut/${USER}/LQanalyzer/data/output/
-export LQANALYZER_LOG_PATH=/data2/LQ_SKTreeOutput/JobOutPut/${USER}/LQanalyzer/data/logfiles/
-
-if [ $HOSTNAME == "tamsa2.snu.ac.kr" ];
-    then
-    export LQANALYZER_OUTPUT_PATH=/data4/LQ_SKTreeOutput/JobOutPut/${USER}/LQanalyzer/data/output/
-    export LQANALYZER_LOG_PATH=/data4/LQ_SKTreeOutput/JobOutPut/${USER}/LQanalyzer/data/logfiles/
-fi
-
+export LQANALYZER_OUTPUT_PATH=/data7/DATA/LQ_SKTreeOutput/JobOutPut/${USER}/LQanalyzer/data/output/
+export LQANALYZER_LOG_PATH=/data7/DATA/LQ_SKTreeOutput/JobOutPut/${USER}/LQanalyzer/data/logfiles/
 export LQANALYZER_LOG_8TeV_PATH=${LQANALYZER_DIR}/data/logfiles/
+
 python ${LQANALYZER_BIN_PATH}/SetUpWorkSpace.py
 # Setup root area and other paths
  

@@ -2,7 +2,7 @@
 
 ###### SET WHAT JOBS TO RUN
 runMC=true
-runDoubleMuon=false
+runDoubleMuon=true
 
 if [[ $runMC  == "true" ]]; 
 then
@@ -12,7 +12,7 @@ then
     useskim="DiLep"
     outputdir=$LQANALYZER_DIR"/data/output/Muon/"
     #### JOB CONFIGURATION
-    njobs=1
+    njobs=30
     data_lumi="AtoD"
     loglevel="INFO"
     logstep=1000
@@ -28,7 +28,7 @@ then
     source functions.sh
     cycle="ExampleAnalyzerDiMuon"
     skinput="True"
-    stream="singlemuon"
+    stream="muon"
 #    useskim="DiLep"
     outputdir=$LQANALYZER_DIR"/data/output/Muon/"
     #### JOB CONFIGURATION

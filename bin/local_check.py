@@ -36,9 +36,7 @@ snufiledir = os.getenv("FILEDIR")
 old_lib_slc5=os.getenv("LQANALYZER_DIR")+ "/LQLib/slc5/"
 old_lib_slc6=os.getenv("LQANALYZER_DIR")+ "/LQLib/slc6/"
 
-output_mounted="/data2/"
-if "cmscluster.snu.ac.kr" in str(os.getenv("HOSTNAME")):
-    output_mounted="/data4/"
+output_mounted="/data7/DATA"
 
 
 if not os.path.exists(april16dir):

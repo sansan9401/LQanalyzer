@@ -1,8 +1,16 @@
 #include <rochcor2012jan22.h>
 #include <TLorentzVector.h>
 
-
+const double rochcor2012::pi = 3.14159265358979323846;
 const float rochcor2012::netabin[9] = {-2.4,-2.1,-1.4,-0.7,0.0,0.7,1.4,2.1,2.4};
+const float rochcor2012::genm_smr = 9.09956e+01; //gen mass peak with eta dependent gaussian smearing => better match in Z mass profile vs. eta/phi
+const float rochcor2012::genm = 91.06; //gen mass peak without smearing => Z mass profile vs. eta/phi in CMS note
+const float rochcor2012::mrecm = 90.9836; //rec mass peak in MC (2011A)
+const float rochcor2012::drecm = 90.8393; //rec mass peak in data (2011A)
+const float rochcor2012::mgscl_stat = 0.0001; //stat. error of global factor for mass peak in MC (2011A)
+const float rochcor2012::mgscl_syst = 0.0006; //syst. error of global factor for mass peak in MC (2011A)
+const float rochcor2012::dgscl_stat = 0.0001; //stat. error of global factor for mass peak in data (2011A)
+const float rochcor2012::dgscl_syst = 0.0008; //syst. error of global factor for mass peak in data (2011A)
 
 const float rochcor2012::dcor_bf[8][8]={{-0.000019463,-0.000023303,0.000015430,0.000019712,0.000012505,0.000021642,0.000004119,-0.000076009},
 					{0.000000128,0.000008017,0.000023615,0.000009331,0.000004833,0.000004227,0.000011144,-0.000035031},

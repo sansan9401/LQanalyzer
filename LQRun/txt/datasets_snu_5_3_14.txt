@@ -27,7 +27,7 @@ cms_mc_ntuplepath_chargedhiggs     /data2/MC/CHsample/LQNtuple/
 ############################################################################
 
 #####  PATH on SNU cluster machines  (For SKTree only)
-sk_cluster_ntuple_path        /data4/LocalNtuples/SKTrees8TeV/Tag27_CMSSW_5_3_20/SKTrees/
+sk_cluster_ntuple_path        /data7/DATA/LocalNtuples/SKTrees8TeV/Tag27_CMSSW_5_3_20/SKTrees/
 sk_cluster_ntuple_path_void   /data4/ 
 ###### PATH on cms1-6 machines (For SKtrees)
 sk_cms_ntuple_path_2014            /data1/LocalNtuples/Tag27_CMSSW_5_3_14/SKTrees/June14v2/
